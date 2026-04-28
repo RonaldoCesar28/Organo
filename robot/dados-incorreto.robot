@@ -14,9 +14,11 @@ Verificar se quando um campo não for preenchido corretamente o sistema exibe um
 
 *** Keywords ***
 Dado que eu clique no botão criar card   
+    Wait Until Element Is Visible    ${CAMPO_CARD}    timeout=15s
     Click Element    ${CAMPO_CARD}  
 
 Então o sistema deve apresentar uma mensagem de campo obrigatório  
     Element Should Be Visible    id:form-nome-erro
     Element Should Be Visible    id:form-cargo-erro
     Element Should Be Visible    id:form-times-erro 
+    Sleep    15s

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.3 on win32)" generated="2026-04-28T15:12:51.132518" rpa="false" schemaversion="5">
+<suite id="s1" name="Organo" source="D:\Organo">
+<suite id="s1-s1" name="Robot" source="D:\Organo\robot">
+<suite id="s1-s1-s1" name="Dados-Incorreto" source="D:\Organo\robot\dados-incorreto.robot">
+<test id="s1-s1-s1-t1" name="Verificar se quando um campo não for preenchido corretamente o sistema exibe uma mensagem de campo obrigatório" line="11">
+<kw name="Dado que eu acesse o Organo" owner="setup-teardown" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-04-28T15:12:51.847650" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:3000/'.</msg>
+<arg>url=http://localhost:3000/</arg>
+<arg>browser=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-04-28T15:12:51.846852" elapsed="20.118678"/>
+</kw>
+<status status="PASS" start="2026-04-28T15:12:51.844135" elapsed="20.122172"/>
+</kw>
+<kw name="Dado que eu clique no botão criar card">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${CAMPO_CARD}</arg>
+<arg>timeout=15s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-28T15:13:11.968738" elapsed="0.087862"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-04-28T15:13:12.058544" level="INFO">Clicking element 'id:form-botao'.</msg>
+<arg>${CAMPO_CARD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-04-28T15:13:12.057368" elapsed="0.173159"/>
+</kw>
+<status status="PASS" start="2026-04-28T15:13:11.967461" elapsed="0.263549"/>
+</kw>
+<kw name="Então o sistema deve apresentar uma mensagem de campo obrigatório">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-28T15:13:12.284313" level="INFO">Element 'id:form-nome-erro' is displayed.</msg>
+<arg>id:form-nome-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-28T15:13:12.232706" elapsed="0.052323"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-28T15:13:12.313485" level="INFO">Element 'id:form-cargo-erro' is displayed.</msg>
+<arg>id:form-cargo-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-28T15:13:12.285438" elapsed="0.028587"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2026-04-28T15:13:12.346514" level="INFO">Element 'id:form-times-erro' is displayed.</msg>
+<arg>id:form-times-erro</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2026-04-28T15:13:12.314432" elapsed="0.032640"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2026-04-28T15:13:27.349575" level="INFO">Slept 15 seconds.</msg>
+<arg>15s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2026-04-28T15:13:12.347471" elapsed="15.003797"/>
+</kw>
+<status status="PASS" start="2026-04-28T15:13:12.231902" elapsed="15.120899"/>
+</kw>
+<kw name="Fechar o navegador" owner="setup-teardown" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-04-28T15:13:27.358908" elapsed="2.856027"/>
+</kw>
+<status status="PASS" start="2026-04-28T15:13:27.357290" elapsed="2.858202"/>
+</kw>
+<status status="PASS" start="2026-04-28T15:12:51.809027" elapsed="38.407241"/>
+</test>
+<status status="PASS" start="2026-04-28T15:12:51.402806" elapsed="38.822913"/>
+</suite>
+<status status="PASS" start="2026-04-28T15:12:51.394772" elapsed="38.839703"/>
+</suite>
+<status status="PASS" start="2026-04-28T15:12:51.235098" elapsed="39.012055"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Organo" id="s1" pass="1" fail="0" skip="0">Organo</stat>
+<stat name="Robot" id="s1-s1" pass="1" fail="0" skip="0">Organo.Robot</stat>
+<stat name="Dados-Incorreto" id="s1-s1-s1" pass="1" fail="0" skip="0">Organo.Robot.Dados-Incorreto</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
