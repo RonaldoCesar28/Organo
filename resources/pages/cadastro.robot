@@ -1,9 +1,5 @@
 *** Settings ***
-Library          SeleniumLibrary
-Library          FakerLibrary    locale=pt_BR
-Resource         setup-teardown.robot 
-Test Setup       Dado que eu acesse o Organo
-Test Teardown    Fechar o navegador
+Resource    ../main.robot
 
 *** Variables ***
 ${CAMPO_NOME}             id:form-nome
@@ -11,6 +7,7 @@ ${CAMPO_CARGO}            id:form-cargo
 ${CAMPO_IMAGEM}           id:form-imagem
 ${CAMPO_TIME}             class:lista-suspensa
 ${CAMPO_CARD}             id:form-botao
+
 @{selecionar_times}
 ...         //option[contains(.,'Programação')]
 ...         //option[contains(.,'Front-End')]
@@ -19,21 +16,6 @@ ${CAMPO_CARD}             id:form-botao
 ...         //option[contains(.,'UX e Design')]
 ...         //option[contains(.,'Mobile')]
 ...         //option[contains(.,'Inovação e Gestão')]
-
-*** Test Cases *** 
-Verificar se ao preencher os campos do formulário corretamente os dados são inseridos na lista e se um novo card é criado no time esperado
-    Dado que preencha os campos do formulário
-    E clique no botão criar card
-    Então identificar o card dentro do time esperado
-
-Verificar se é possível criar mais de um card no time esperado ao preenchermos os campos corretamente
-    Dado que preencha os campos do formulário
-    E clique no botão criar card
-    Então identificar 3 cards dentro do time esperado
-
-Verificar se é possível criar um card para cada time disponível ao preenchermos os campos corretamente
-    Dado que preencha os campos do formulário   
-    Então criar e identificar 1 card em cada time disponível
 
 *** Keywords ***
 Dado que preencha os campos do formulário
@@ -67,4 +49,14 @@ Então criar e identificar 1 card em cada time disponível
         Click Element    ${time} 
         E clique no botão criar card
     END
+    Sleep    30s
+
+Dado que eu clique no botão criar card   
+    Wait Until Element Is Visible    ${CAMPO_CARD}    timeout=15s
+    Click Element    ${CAMPO_CARD}  
+
+Então o sistema deve apresentar uma mensagem de campo obrigatório  
+    Element Should Be Visible    id:form-nome-erro
+    Element Should Be Visible    id:form-cargo-erro
+    Element Should Be Visible    id:form-times-erro 
     Sleep    30s
